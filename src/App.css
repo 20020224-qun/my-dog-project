@@ -1,11 +1,12 @@
 /* 容器基礎設定：建立星空背景 */
 .app-container {
-  background: radial-gradient(circle, #1a2a6c 0%, #000000 100%);
+  background: radial-gradient(circle, #1a2a6c 0%, #000000 100%); 
   min-height: 100vh;
   position: relative;
   overflow: hidden;
   color: white;
 }
+/* 圓圈放射底、定位:相對、過多內容:隱藏*/
 
 /* 標題動畫：利用 cubic-bezier 創造彈性移動感 */
 .main-title {
@@ -15,6 +16,7 @@
   white-space: nowrap;
   z-index: 10000;
 }
+/* 定位:絕對隨父元素relative、動畫過渡:all屬性 以三點貝塞爾函數定義、滑鼠變手指、字不自換行、堆疊順序:最上*/
 
 .main-title.center {
   top: 50%;
@@ -25,12 +27,14 @@
   text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
   animation: titleGlow 2s ease-in-out infinite;
 }
+/* 字大小設為 4 倍基準字、 加上文字陰影、動畫套用titleGlow(閃亮呼吸燈)*/
 
 /* 呼吸燈特效 */
 @keyframes titleGlow {
   0%, 100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); transform: translate(-50%, -50%) scale(1); }
   50% { text-shadow: 0 0 40px rgba(212, 175, 55, 1); transform: translate(-50%, -50%) scale(1.05); }
 }
+/* 0%,100% 50%=動畫的起終點。 動畫的中點、text-shadow:控制光暈強度與範圍、scale字體微微放大*/
 
 .main-title.moved {
   top: 40px;
@@ -43,11 +47,13 @@
 .fade-in {
   animation: fadeInEffect 1s ease-in forwards;
 }
+/* ease-in:動畫開始慢、後面加速，讓淡入更自然。 forwards:動畫結束後保持最後的狀態 */
 
 @keyframes fadeInEffect {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+/* opacity透明度。 此用"fadeInEffect"非transition原因:前者自動後者須互動*/
 
 /* 牌陣佈局 */
 .tarot-row {
@@ -58,6 +64,7 @@
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
+/* 水平置中。卡牌距離頂端。滑鼠移動此卡的動畫。 */
 
 /* 抽卡時的背景弱化：增加沉浸感 */
 .tarot-row.has-selected .dog-card:not(.selected) {
@@ -66,6 +73,9 @@
   pointer-events: none;
   transform: none !important;
 }
+/* 當.tarot-row有.has-selected class時，所有不是.selected的卡片都會套用這些效果。
+filter:模糊+灰階。pointer-events:禁止滑鼠操作。移除任何 transform 效果。
+ */
 
 /* 卡片基礎尺寸與 3D 透視設定 */
 .dog-card {
@@ -77,6 +87,7 @@
   transition: transform 0.2s ease-out, filter 0.2s linear; 
   z-index: 1;
 }
+/* perspective:設定 3D 透視深度 */
 
 /* 懸停效果：輕微上浮 */
 .dog-card:hover:not(.selected) {
