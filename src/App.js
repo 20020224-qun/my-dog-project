@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+/*
+1.引入 React 與 useState Hook，用來管理狀態。
+2.引入 Bootstrap 樣式，方便用 className 套用排版與顏色。 
+3.引入自訂 CSS，補充或覆蓋 Bootstrap。
+*/
 function App() {
-  // 1. 初始化資料狀態：包含諧音梗狗狗與對應的幸運語錄
+  // 1. 初始化資料狀態
   const [dogs, setDogs] = useState([
     { 
       id: 1, 
@@ -43,7 +47,7 @@ function App() {
     { 
       id: 6, 
       name: "奇異狗", 
-      fortune: "如果外表看起來毛茸茸、怪怪的也沒關係，切開來後的內在美才是你的真本事。",
+      fortune: "如果覺得怪怪的也沒關係，切開來後的內在美才是你的真本事。",
       image: { url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvMg2g9t8U10lInul7ujRFU6bFMZhzOhulZQ&s" },
       color: "text-success"
     }
@@ -52,6 +56,10 @@ function App() {
   // 2. 狀態定義
   const [selectedId, setSelectedId] = useState(null); // 紀錄目前選中的卡片 ID
   const [gameStarted, setGameStarted] = useState(false); // 控制遊戲是否開始（標題切換）
+  /*
+  Selected Id → 紀錄目前選中的卡片 ID，初始為 null。
+  GameStarted → 控制遊戲是否開始，初始為 false。
+  */
 
   /**
    * Fisher-Yates 洗牌演算法：確保陣列隨機性的專業寫法
